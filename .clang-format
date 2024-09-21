@@ -1,1 +1,4 @@
-BasedOnStyle: google
+# yaml-language-server: $schema=https://json.schemastore.org/clang-format.json
+
+BasedOnStyle: Google
+InsertNewlineAtEOF: true

@@ -1,12 +1,12 @@
-.mr-common:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-
 .meson-cache:
   before_script: meson setup --reconfigure .build
   cache:
     paths:
       - .build
+
+.mr-common:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 default:
   tags:
@@ -54,4 +54,4 @@ mr-test-meson:
     - .mr-common
     - .meson-cache
   image: registry.zrnt.dev/oci/clang-meson:v1.1.0
-  script: meson test -C .build
+  script: meson test -C .build --print-errorlogs
