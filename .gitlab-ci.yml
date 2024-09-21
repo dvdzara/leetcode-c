@@ -1,0 +1,52 @@
+.mr-common:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+.meson-cache:
+  before_script: meson setup --reconfigure .build
+  cache:
+    paths:
+      - .build
+
+default:
+  tags:
+    - default
+
+mr-fmt-clang-format:
+  extends:
+    - .mr-common
+    - .meson-cache
+  image: registry.zrnt.dev/oci/clang-meson:v1.1.0
+  script:
+    - ninja -C .build clang-format
+    - git diff --quiet
+
+mr-fmt-clang-tidy:
+  extends:
+    - .mr-common
+    - .meson-cache
+  image: registry.zrnt.dev/oci/clang-meson:v1.1.0
+  script:
+    - ninja -C .build clang-tidy
+
+mr-test-meson:
+  extends:
+    - .mr-common
+    - .meson-cache
+  image: registry.zrnt.dev/oci/clang-meson:v1.1.0
+  script: meson test -C .build
+
+mr-fmt-prettier:
+  extends: .mr-common
+  image: registry.zrnt.dev/oci/prettier:v1.0.9@sha256:2126c2e4284aa14b910b1288cd99e3bb57909ab03ede4ba2366c7b20a1c07c9d
+  script: prettier --check .
+
+mr-lint-docker-compose:
+  extends: .mr-common
+  image: docker.io/library/docker:27.2.1-cli@sha256:235a25499afa28f3c359b4a90d4245fc74d21f2f368cfb7bbc48aca1e189609d
+  script: find . -name 'docker-compose.yml' | while read f ; do docker compose -f "$f" config -q ; done
+
+mr-lint-yaml:
+  extends: .mr-common
+  image: registry.zrnt.dev/oci/yamllint:v1.0.10@sha256:1c3fe3c3f6797c0ded5b4d708c2172906545d9c9a35dc8f00d5447313b1c1556
+  script: yamllint -c .gitlab/yamllint.yml .
