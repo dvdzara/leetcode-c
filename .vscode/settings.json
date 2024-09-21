@@ -1,0 +1,7 @@
+{
+  "prettier.configPath": ".gitlab/prettier.json",
+  "files.associations": {
+    "lib.h": "c",
+    "solution.h": "c"
+  }
+}
