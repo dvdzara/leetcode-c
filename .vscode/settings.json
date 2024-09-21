@@ -1,7 +1,8 @@
 {
   "prettier.configPath": ".gitlab/prettier.json",
   "files.associations": {
-    "lib.h": "c",
-    "solution.h": "c"
+    "*.h": "c",
+    ".clang-tidy": "yaml",
+    ".clang-format": "yaml"
   }
 }
