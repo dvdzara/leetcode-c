@@ -1,8 +1,15 @@
 {
-  "prettier.configPath": ".gitlab/prettier.json",
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
+  "C_Cpp.default.compileCommands": "/srv/.build/compile_commands.json",
+  "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
   "files.associations": {
     "*.h": "c",
     ".clang-tidy": "yaml",
     ".clang-format": "yaml"
-  }
+  },
+  "mesonbuild.buildFolder": ".build",
+  "mesonbuild.configureOnOpen": true,
+  "mesonbuild.downloadLanguageServer": true,
+  "prettier.configPath": ".gitlab/prettier.json"
 }

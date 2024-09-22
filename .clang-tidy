@@ -10,7 +10,7 @@ Checks: |
   performance-*,
   portability-*,
   readability-*,
-  -bugprone-easily-swappable-parameters,
+  -bugprone-easily-swappable-parameters
 WarningsAsErrors: "*"
 CheckOptions:
   readability-identifier-naming.NamespaceCase: lower_case
