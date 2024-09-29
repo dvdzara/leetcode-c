@@ -17,4 +17,4 @@ RUN microdnf install -y --setopt install_weak_deps=0 \
 ENV CC=clang
 ENV CXX=clang++
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT ["/bin/bash","-c"]
