@@ -1,0 +1,55 @@
+.meson-cache:
+  before_script:
+    - meson setup --reconfigure .build
+    - meson subprojects update
+  cache:
+    paths:
+      - .build
+      - subprojects
+
+.mr-common:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+mr-fmt-clang-format:
+  extends:
+    - .mr-common
+    - .meson-cache
+  image: registry.zrnt.dev/leetcode/c/ci:latest
+  script:
+    - ninja -C .build clang-format
+    - git diff --quiet
+
+mr-fmt-prettier:
+  extends: .mr-common
+  image: registry.zrnt.dev/oci/prettier:v1.0.10@sha256:950579d4ab941300ccff5c8e0449bf74c01bbc8df79a34fb9b53f1525dbdc026
+  script: prettier --config .gitlab/prettier.json --check .
+
+mr-lint-clang-tidy:
+  extends:
+    - .mr-common
+    - .meson-cache
+  image: registry.zrnt.dev/leetcode/c/ci:latest
+  script: ninja -C .build clang-tidy
+
+mr-lint-docker-compose:
+  extends: .mr-common
+  image: docker.io/library/docker:27.3.1-cli@sha256:6806d2764925d3b483f9732422b95321781765aeece274b4e60063d02e13efd6
+  script: find . -name 'docker-compose.yml' | while read f ; do docker compose -f "$f" config -q ; done
+
+mr-lint-markdown:
+  extends: .mr-common
+  image: registry.zrnt.dev/oci/markdownlint-cli2:v1.0.5@sha256:8687f662026c3ac3171a0bfcfb2b749b0d9881de79205e5afcada5a63de2668c
+  script: markdownlint-cli2 *.md
+
+mr-lint-yaml:
+  extends: .mr-common
+  image: registry.zrnt.dev/oci/yamllint:v1.0.11@sha256:c90581e1770d20c9a2c7a138b06c0c0204764bf9695afe381c19728e2b1c0080
+  script: yamllint -c .gitlab/yamllint.yml .
+
+mr-test-meson:
+  extends:
+    - .mr-common
+    - .meson-cache
+  image: registry.zrnt.dev/leetcode/c/ci:latest
+  script: meson test -C .build --print-errorlogs

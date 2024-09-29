@@ -7,9 +7,9 @@
         "esbenp.prettier-vscode",
         "GitLab.gitlab-workflow",
         "mesonbuild.mesonbuild",
+        "ms-azuretools.vscode-docker",
         "ms-vscode.cpptools",
-        "redhat.vscode-yaml",
-        "stkb.rewrap"
+        "redhat.vscode-yaml"
       ]
     }
   },

@@ -1,6 +1,5 @@
 {
   "C_Cpp.codeAnalysis.clangTidy.enabled": true,
-  "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
   "C_Cpp.default.compileCommands": "/srv/.build/compile_commands.json",
   "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
   "files.associations": {
@@ -11,5 +10,5 @@
   "mesonbuild.buildFolder": ".build",
   "mesonbuild.configureOnOpen": true,
   "mesonbuild.downloadLanguageServer": true,
-  "prettier.configPath": ".gitlab/prettier.json"
+  "prettier.configPath": ".gitlab/prettier.json",
 }
