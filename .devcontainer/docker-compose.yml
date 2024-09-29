@@ -1,8 +1,5 @@
 services:
   devcontainer:
-    build: .
-    entrypoint:
-      - sleep
-      - infinity
+    image: registry.zrnt.dev/leetcode/c/ci:latest
     volumes:
       - ../:/srv:Z

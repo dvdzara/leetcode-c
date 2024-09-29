@@ -3,7 +3,7 @@ docker-build:
   rules:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       changes:
-        - .devcontainer/Dockerfile
+        - Dockerfile
     - if: $CI_PIPELINE_SOURCE == "schedule"
   script:
     - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
