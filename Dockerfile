@@ -1,5 +1,6 @@
-FROM registry.redhat.io/ubi9/ubi-minimal:9.4
+FROM registry.fedoraproject.org/fedora:41
 
+# hadolint ignore=DL3041
 RUN microdnf install -y --setopt install_weak_deps=0 \
   git \
   gpg \
