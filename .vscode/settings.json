@@ -10,5 +10,5 @@
   "mesonbuild.buildFolder": ".build",
   "mesonbuild.configureOnOpen": true,
   "mesonbuild.downloadLanguageServer": true,
-  "prettier.configPath": ".gitlab/prettier.json",
+  "prettier.configPath": ".gitlab/prettier.json"
 }
