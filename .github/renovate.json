@@ -1,4 +1,23 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>renovate-bot/presets"]
+  "configMigration": true,
+  "dependencyDashboard": true,
+  "extends": ["config:best-practices", "customManagers:dockerfileVersions"],
+  "osvVulnerabilityAlerts": true,
+  "packageRules": [
+    {
+      "matchFileNames": [".devcontainer/**"],
+      "groupName": "devcontainer",
+      "groupSlug": "devcontainer",
+      "automerge": true
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "groupSlug": "github-actions",
+      "automerge": true
+    }
+  ],
+  "semanticCommits": "enabled",
+  "assignees": ["dvdzara"]
 }
