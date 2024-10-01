@@ -1,3 +1,5 @@
 .build/
+
 subprojects/*
-!subprojects/criterion.wrap
+!subprojects/gtest.wrap
+!subprojects/wrapdb.json

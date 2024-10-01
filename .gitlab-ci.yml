@@ -1,9 +1,0 @@
-default:
-  tags:
-    - default
-
-include:
-  - .gitlab/workflows/**.yml
-
-variables:
-  GIT_DEPTH: 1

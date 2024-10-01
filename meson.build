@@ -1,14 +1,14 @@
 project(
   'leetcode-c',
   'c',
+  # Needed to compile gtest.
+  'cpp',
   default_options: [
     'c_args=-Wpedantic -Wextra -Wall',
+    # Standard used by leetcode.
     'c_std=gnu11',
   ],
 )
-
-lib_criterion = subproject('criterion').get_variable('criterion')
-headers = include_directories('src/')
 
 problems = ['0001', '0002']
 
@@ -19,8 +19,8 @@ foreach p : problems
       p,
       f'tests/@p@.c',
       link_with: library(p, f'src/@p@/solution.c'),
-      include_directories: headers,
-      dependencies: lib_criterion,
+      include_directories: include_directories(f'src/@p@'),
+      dependencies: subproject('gtest').get_variable('gtest_dep'),
     ),
   )
 endforeach

@@ -1,5 +1,5 @@
 services:
   devcontainer:
-    image: registry.zrnt.dev/leetcode/c/ci:latest
+    build: .
     volumes:
       - ../:/srv:Z
