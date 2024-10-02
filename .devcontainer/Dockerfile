@@ -1,16 +1,17 @@
 FROM docker.io/library/ubuntu:24.04
 
+# hadolint ignore=DL3009,DL3008
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
-  ca-certificates \
   git \
   gpg \
+  ca-certificates \
   meson \
   clang \
-  # Needed by meson LSP
-  pkg-config \
   clang-format \
-  clang-tidy && \
+  clang-tidy \
+  # Needed by meson LSP
+  pkg-config && \
   apt-get clean
 
 ENV CC=clang
