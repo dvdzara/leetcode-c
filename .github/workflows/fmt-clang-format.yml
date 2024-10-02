@@ -1,11 +1,14 @@
 jobs:
   fmt-clang-format:
-    runs-on: ubuntu-latest
+    env:
+      CC: clang
+      CXX: clang++
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
-      - run: apt-get update
-      - run: apt-get install -y --no-install-recommends meson clang-format
-      - run: meson setup .build
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y --no-install-recommends meson clang-format
+      - run: meson setup --reconfigure .build || rm -rf .build && meson setup .build
       - run: ninja -C .build clang-format
       - uses: stefanzweifel/git-auto-commit-action@8621497c8c39c72f3e2a999a26b4ca1b5058a842 # v5.0.1
         with:

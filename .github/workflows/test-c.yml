@@ -1,15 +1,18 @@
 jobs:
   test-c:
-    runs-on: ubuntu-latest
+    env:
+      CC: clang
+      CXX: clang++
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
-      - run: apt-get update
-      - run: apt-get install -y --no-install-recommends meson clang
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y --no-install-recommends meson clang
       - uses: actions/cache@v4.0.2
         with:
           key: ${{ runner.os }}
           path: .build
-      - run: meson setup .build
+      - run: meson setup --reconfigure .build || rm -rf .build && meson setup .build
       - run: meson test -C .build
 
 name: test-c

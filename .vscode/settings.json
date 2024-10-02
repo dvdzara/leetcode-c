@@ -8,5 +8,5 @@
   "mesonbuild.downloadLanguageServer": true,
   "prettier.configPath": ".github/prettier.json",
   "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
-  "C_Cpp.default.compileCommands": "/srv/.build/compile_commands.json",
+  "C_Cpp.default.compileCommands": "/srv/.build/compile_commands.json"
 }
