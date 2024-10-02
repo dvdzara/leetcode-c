@@ -12,7 +12,7 @@ jobs:
         with:
           key: ${{ runner.os }}
           path: .build
-      - run: meson setup .build
+      - run: meson setup --reconfigure .build || rm -rf .build && meson setup .build
       - run: meson test -C .build
 
 name: test-c
