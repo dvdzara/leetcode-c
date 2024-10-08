@@ -12,13 +12,7 @@ jobs:
       - uses: actions/checkout@v4.2.1
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_ALL_CODEBASE: true
         uses: oxsecurity/megalinter@v8.0.0
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore(megalinter): apply linters fixes"
-          commit_user_email: nicolas.vuillamy@ox.security
-          commit_user_name: megalinter-bot
 
 name: megalinter
 
