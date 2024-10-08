@@ -13,8 +13,8 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore(megalinter): apply linters fixes"
-          commit_user_name: megalinter-bot
           commit_user_email: nicolas.vuillamy@ox.security
+          commit_user_name: megalinter-bot
 
 name: megalinter
 

@@ -2,6 +2,7 @@ FROM mcr.microsoft.com/devcontainers/base:1.0.9-bookworm
 
 ENV CLANG_VERSION="18"
 
+SHELL ["/bin/bash", "-c"]
 RUN set -o pipefail && \
   echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-$CLANG_VERSION main" | tee /etc/apt/sources.list.d/llvm.list && \
   curl "https://apt.llvm.org/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc && \
