@@ -1,20 +1,22 @@
-FROM docker.io/library/ubuntu:24.04@sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5dc1ef9006b
+FROM mcr.microsoft.com/devcontainers/base:1.0.9-bookworm
+
+ENV CLANG_VERSION="18"
+
+RUN echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-$CLANG_VERSION main" | tee /etc/apt/sources.list.d/llvm.list
+RUN curl "https://apt.llvm.org/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 
 # hadolint ignore=DL3009,DL3008
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
-  git \
-  gpg \
-  ca-certificates \
-  meson \
-  clang \
-  clang-format \
-  clang-tidy \
-  # Needed by meson LSP
-  pkg-config && \
-  apt-get clean
+    "clang-$CLANG_VERSION" \
+    "clang-format-$CLANG_VERSION" \
+    "clang-tidy-$CLANG_VERSION" \
+    pkg-config \
+    python3 \
+    python3-pip \
+    ninja-build && \
+  apt-get clean && \
+  pip install --no-cache-dir --break-system-packages --compile meson
 
-ENV CC=clang
-ENV CXX=clang++
-
-ENTRYPOINT []
+ENV CC="clang-$CLANG_VERSION"
+ENV CXX="clang++-$CLANG_VERSION"
