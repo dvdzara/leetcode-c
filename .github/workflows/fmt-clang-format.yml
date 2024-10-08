@@ -24,3 +24,5 @@ name: fmt-clang-format
   pull_request:
     branches:
       - main
+
+permissions: read-all

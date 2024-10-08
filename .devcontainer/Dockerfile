@@ -2,11 +2,10 @@ FROM mcr.microsoft.com/devcontainers/base:1.0.9-bookworm
 
 ENV CLANG_VERSION="18"
 
-RUN echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-$CLANG_VERSION main" | tee /etc/apt/sources.list.d/llvm.list
-RUN curl "https://apt.llvm.org/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
-
-# hadolint ignore=DL3009,DL3008
-RUN apt-get update && \
+RUN set -o pipefail && \
+  echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-$CLANG_VERSION main" | tee /etc/apt/sources.list.d/llvm.list && \
+  curl "https://apt.llvm.org/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc && \
+  apt-get update && \
   apt-get install -y --no-install-recommends \
     "clang-$CLANG_VERSION" \
     "clang-format-$CLANG_VERSION" \

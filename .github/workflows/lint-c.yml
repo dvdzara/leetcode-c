@@ -21,3 +21,5 @@ name: lint-c
   pull_request:
     branches:
       - main
+
+permissions: read-all

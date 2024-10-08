@@ -1,1 +1,3 @@
-APPLY_FIXES: all
+APPLY_FIXES: "true"
+DISABLE:
+  - SPELL

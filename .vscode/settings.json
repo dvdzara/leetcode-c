@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.h": "c",
+    ".clang-tidy": "yaml",
+    ".clang-format": "yaml"
+  },
+  "mesonbuild.buildFolder": ".build",
+  "mesonbuild.downloadLanguageServer": true,
+  "C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
+  "C_Cpp.default.compileCommands": "/workspaces/leetcode-c/.build/compile_commands.json"
+}
