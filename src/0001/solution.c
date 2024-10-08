@@ -1,5 +1,7 @@
 // Copyright [2024] Davide Zarantonello
 
+#include "src/0001/solution.h"
+
 #include <stdlib.h>
 
 int *two_sum(const int *nums, int nums_size, int target, int *return_size) {

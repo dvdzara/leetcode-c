@@ -1,6 +1,6 @@
 // Copyright [2024] Davide Zarantonello
 
-#include "./solution.h"
+#include "src/0002/solution.h"
 
 #include <stdlib.h>
 
