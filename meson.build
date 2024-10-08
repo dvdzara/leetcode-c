@@ -19,7 +19,6 @@ foreach p : problems
       p,
       f'tests/@p@.c',
       link_with: library(p, f'src/@p@/solution.c'),
-      include_directories: include_directories(f'src/@p@'),
       dependencies: subproject('gtest').get_variable('gtest_dep'),
     ),
   )

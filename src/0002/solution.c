@@ -1,4 +1,6 @@
-#include "solution.h"
+// Copyright [2024] Davide Zarantonello
+
+#include "src/0002/solution.h"
 
 #include <stdlib.h>
 
@@ -20,7 +22,7 @@ struct ListNode* add_two_numbers(struct ListNode* ln1, struct ListNode* ln2) {
       ln2 = ln2->next;
     }
 
-    node->next = malloc(sizeof(struct ListNode));
+    node->next = calloc(1, sizeof(struct ListNode));
     node->next->val = node->val / NODE_MAX_VALUE;
     node->next->next = NULL;
     node->val %= NODE_MAX_VALUE;
