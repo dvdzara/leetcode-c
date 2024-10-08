@@ -3,3 +3,5 @@
 subprojects/*
 !subprojects/gtest.wrap
 !subprojects/wrapdb.json
+
+megalinter-reports/
