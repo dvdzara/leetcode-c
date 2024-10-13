@@ -9,6 +9,7 @@ steps:
       - pip install --root-user-action=ignore "meson==$MESON_VERSION"
       - export CC="clang-$CLANG_VERSION"
       - export CXX="clang++-$CLANG_VERSION"
+      - ln -s "/usr/bin/clang-tidy-$CLANG_VERSION" /usr/bin/clang-tidy
       - meson setup .build
       - ninja -C .build clang-tidy
     environment:
