@@ -8,7 +8,6 @@
       "extensions": [
         "DavidAnson.vscode-markdownlint",
         "esbenp.prettier-vscode",
-        "github.vscode-github-actions",
         "mesonbuild.mesonbuild",
         "ms-vscode.cpptools",
         "redhat.vscode-yaml"
@@ -16,6 +15,7 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/common-utils": {}
+    "ghcr.io/devcontainers/features/common-utils": {},
+    "ghcr.io/devcontainers/features/git": {}
   }
 }

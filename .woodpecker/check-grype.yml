@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/woodpecker-ci/woodpecker/main/pipeline/frontend/yaml/linter/schema/schema.json
+
+steps:
+  - entrypoint:
+      - /grype
+      - --verbose
+      - dir:.
+    image: docker.io/anchore/grype:v0.82.0@sha256:647f6ed684917a9b6c3ae51bd15f8baf92cdc7bdcf59a4fdfb431256a8860166
+    name: check-grype
+
+when:
+  - event: pull_request

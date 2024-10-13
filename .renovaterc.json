@@ -12,12 +12,21 @@
       "automerge": true
     },
     {
-      "matchManagers": ["github-actions"],
-      "groupName": "github-actions",
-      "groupSlug": "github-actions",
+      "matchManagers": ["woodpecker"],
+      "groupName": "woodpecker",
+      "groupSlug": "woodpecker",
       "automerge": true
-    }
+    },
   ],
   "semanticCommits": "enabled",
-  "assignees": ["dvdzara"]
+  "assignees": ["dvdzara"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^\\.woodpecker(?:/[^/]+)?\\.ya?ml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =][\"']?(?<currentValue>.+?)[\"']?\\s"
+      ]
+    }
+  ]
 }

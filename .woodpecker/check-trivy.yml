@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/woodpecker-ci/woodpecker/main/pipeline/frontend/yaml/linter/schema/schema.json
+
+steps:
+  - commands:
+      - trivy repo --exit-code=1 --cache-dir=/cache --no-progress --scanners=vuln,secret,misconfig .
+    image: docker.io/aquasec/trivy:0.56.2@sha256:26245f364b6f5d223003dc344ec1eb5eb8439052bfecb31d79aeba0c74344b3a
+    name: check-trivy
+    volumes:
+      - woodpecker-repo-${CI_REPO_REMOTE_ID}-trivy:/cache
+
+when:
+  - event: pull_request

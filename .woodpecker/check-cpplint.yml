@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/woodpecker-ci/woodpecker/main/pipeline/frontend/yaml/linter/schema/schema.json
+
+steps:
+  - commands:
+      - pip install --root-user-action=ignore "cpplint==$CPPLINT_VERSION"
+      - apk add git
+      - |
+        git ls-tree --name-only -r HEAD | grep -E "^(.+\/)?.*[^\/\s]\.(c|h)$" | while read f ; do
+          echo "checking $f" && cpplint "$f"
+        done
+    environment:
+      # renovate: datasource=pypi depName=cpplint versioning=pep440
+      CPPLINT_VERSION: 2.0.0
+    image: docker.io/library/python:3.13.0-alpine@sha256:81362dd1ee15848b118895328e56041149e1521310f238ed5b2cdefe674e6dbf
+    name: check-cpplint
+
+when:
+  - event: pull_request
