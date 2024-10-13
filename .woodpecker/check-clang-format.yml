@@ -6,7 +6,7 @@ steps:
       - curl "https://apt.llvm.org/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
       - apt-get update
       - apt-get install -y --no-install-recommends "clang-$CLANG_VERSION" "clang-format-$CLANG_VERSION" ninja-build
-      - pip install --root-user-action ignore "meson==$MESON_VERSION"
+      - pip install --root-user-action=ignore "meson==$MESON_VERSION"
       - export CC="clang-$CLANG_VERSION"
       - export CXX="clang++-$CLANG_VERSION"
       - meson setup .build

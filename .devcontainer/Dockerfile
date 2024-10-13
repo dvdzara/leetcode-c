@@ -21,7 +21,7 @@ ENV CXX="clang++-$CLANG_VERSION"
 
 # renovate: datasource=pypi depName=meson versioning=pep440
 ENV MESON_VERSION="1.5.2"
-RUN pip install --root-user-action ignore "meson==$MESON_VERSION"
+RUN pip install --root-user-action=ignore --no-cache-dir "meson==$MESON_VERSION"
 
 USER vscode
 HEALTHCHECK NONE
