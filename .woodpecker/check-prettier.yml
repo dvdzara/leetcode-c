@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/woodpecker-ci/woodpecker/main/pipeline/frontend/yaml/linter/schema/schema.json
+
+steps:
+  - commands:
+      - npx "prettier@$PRETTIER_VERSION" --check .
+    environment:
+      # renovate: datasource=npm depName=prettier versioning=npm
+      PRETTIER_VERSION: 3.3.3
+    image: docker.io/library/node:22.9.0-bookworm@sha256:69e667a79aa41ec0db50bc452a60e705ca16f35285eaf037ebe627a65a5cdf52
+    name: check-prettier
+
+when:
+  - event: pull_request
