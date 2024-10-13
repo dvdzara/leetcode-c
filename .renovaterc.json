@@ -16,7 +16,7 @@
       "groupName": "woodpecker",
       "groupSlug": "woodpecker",
       "automerge": true
-    },
+    }
   ],
   "semanticCommits": "enabled",
   "assignees": ["dvdzara"],
