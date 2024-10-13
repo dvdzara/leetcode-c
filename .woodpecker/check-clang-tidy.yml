@@ -12,9 +12,9 @@ steps:
       - meson setup .build
       - ninja -C .build clang-tidy
     environment:
+      CLANG_VERSION: 18
       # renovate: datasource=pypi depName=meson versioning=pep440
       MESON_VERSION: 1.5.2
-      CLANG_VERSION: 18
     image: docker.io/library/python:3.13.0-bookworm
     name: check-clang-tidy
 

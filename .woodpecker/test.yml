@@ -10,11 +10,11 @@ steps:
       - export CC="clang-$CLANG_VERSION"
       - export CXX="clang++-$CLANG_VERSION"
       - meson setup .build
-      - meson test
+      - meson test -C .build
     environment:
+      CLANG_VERSION: 18
       # renovate: datasource=pypi depName=meson versioning=pep440
       MESON_VERSION: 1.5.2
-      CLANG_VERSION: 18
     image: docker.io/library/python:3.13.0-bookworm
     name: test
 
