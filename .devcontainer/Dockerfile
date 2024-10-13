@@ -20,5 +20,6 @@ ENV CXX="clang++-$CLANG_VERSION"
 ENV MESON_VERSION="1.5.2"
 RUN pip install --root-user-action=ignore --no-cache-dir "meson==$MESON_VERSION"
 
+ENTRYPOINT []
 USER vscode
 HEALTHCHECK NONE
