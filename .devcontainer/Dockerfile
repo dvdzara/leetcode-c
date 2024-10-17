@@ -1,4 +1,4 @@
-FROM docker.io/library/python:3.13.0-bookworm@sha256:9f9fbb053718aa5cb814ba6416289a86d5d1436ddd64c0d3754d225dda5dcfbb
+FROM docker.io/library/python:3.13.0-bookworm@sha256:bae74cc555053808311b7d124e96283588391eaccff53627919f0ed3d547620d
 
 ENV CLANG_VERSION="18"
 
