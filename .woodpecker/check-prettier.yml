@@ -6,7 +6,7 @@ steps:
     environment:
       # renovate: datasource=npm depName=prettier versioning=npm
       PRETTIER_VERSION: 3.3.3
-    image: docker.io/library/node:22.9.0-bookworm@sha256:69e667a79aa41ec0db50bc452a60e705ca16f35285eaf037ebe627a65a5cdf52
+    image: docker.io/library/node:23.0.0-bookworm@sha256:12eceafc86e04862a24f9cdbbdbada57fc36644bdc7e0f643e6767866cedeb1c
     name: check-prettier
 
 when:
