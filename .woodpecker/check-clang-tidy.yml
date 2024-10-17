@@ -16,7 +16,7 @@ steps:
       CLANG_VERSION: 18
       # renovate: datasource=pypi depName=meson versioning=pep440
       MESON_VERSION: 1.5.2
-    image: docker.io/library/python:3.13.0-bookworm@sha256:a680a0edc77501edf235bcc10e81b23269b7320bbf6067b457534cf199007601
+    image: docker.io/library/python:3.13.0-bookworm@sha256:9f9fbb053718aa5cb814ba6416289a86d5d1436ddd64c0d3754d225dda5dcfbb
     name: check-clang-tidy
 
 when:
