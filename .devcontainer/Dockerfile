@@ -1,3 +1,5 @@
+# kics-scan disable=df746b39-6564-4fed-bf85-e9c44382303c
+
 FROM docker.io/library/python:3.13.0-bookworm@sha256:0eb8d3feda44654b7bc3e6e21dd19b793ce9eda75bbd0cf16a2407a1f0a4448b
 
 # Configure shell.
@@ -14,7 +16,6 @@ RUN rm \
 
 # Install clang and dependencies of meson and valgrind.
 
-# kics-scan ignore-block
 # hadolint ignore=DL3008,DL3009,DL3015
 RUN echo "deb https://apt.llvm.org/bookworm llvm-toolchain-bookworm-18 main" | tee /etc/apt/sources.list.d/llvm.list && \
     curl "https://apt.llvm.org/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc && \
