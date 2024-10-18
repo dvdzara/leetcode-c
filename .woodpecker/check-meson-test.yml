@@ -5,7 +5,7 @@ steps:
       # Configure apt.
       - rm /etc/apt/apt.conf.d/70debconf /etc/apt/apt.conf.d/docker-autoremove-suggests /etc/apt/apt.conf.d/docker-clean /etc/apt/apt.conf.d/docker-gzip-indexes
       - echo 'APT::Get::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";' | tee /etc/apt/apt.conf.d/01-ci-no-extra-pkgs
-      - echo 'APT::Dir::state "/cache/apt/lists";\nAPT::Dir::cache "/cache/apt/archives";' | tee /etc/apt/apt.conf.d/02-ci-cache-dir
+      - echo 'APT::Dir::state "cache/apt/state";\nAPT::Dir::cache "cache/apt/cache";' | tee /etc/apt/apt.conf.d/02-ci-cache-dir
 
       # Install clang, ninja and libc6-dbg.
       - echo "deb https://apt.llvm.org/bookworm llvm-toolchain-bookworm-18 main" | tee /etc/apt/sources.list.d/llvm.list
@@ -44,8 +44,8 @@ steps:
     volumes:
       - wp-cache_${CI_REPO_REMOTE_ID}_build:/cache/build
       - wp-cache_${CI_REPO_REMOTE_ID}_valgrind-build:/cache/valgrind
-      - wp-cache_global_apt-archives:/cache/apt/archives
-      - wp-cache_global_apt-lists:/cache/apt/lists
+      - wp-cache_global_apt-cache:/cache/apt/cache
+      - wp-cache_global_apt-state:/cache/apt/state
       - wp-cache_global_pip:/cache/pip
 
 when:
