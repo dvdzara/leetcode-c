@@ -30,7 +30,7 @@ steps:
       - cd ${CI_WORKSPACE}
 
       # Setup and test.
-      - meson setup --reconfigure /cache/build || rm -rf /cache/build && meson setup /cache/build
+      - meson setup --reconfigure /cache/build || rm -rf /cache/build/* /cache/build/.* && meson setup /cache/build
       - meson test --wrap='valgrind --leak-check=full --error-exitcode=1' -C /cache/build
     environment:
       CC: clang-18

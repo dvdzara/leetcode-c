@@ -17,7 +17,7 @@ steps:
       - pip install --root-user-action=ignore --cache-dir=/cache/pip --progress-bar=off "meson==$MESON_VERSION"
 
       # Setup and compile.
-      - meson setup --reconfigure /cache/build || rm -rf /cache/build && meson setup /cache/build
+      - meson setup --reconfigure /cache/build || rm -rf /cache/build/* /cache/build/.* && meson setup /cache/build
       - meson compile -C /cache/build
     environment:
       CC: clang-18

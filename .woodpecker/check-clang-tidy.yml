@@ -19,7 +19,7 @@ steps:
       - pip install --root-user-action=ignore --cache-dir=/cache/pip --progress-bar=off "meson==$MESON_VERSION"
 
       # Setup and clang-tidy.
-      - meson setup --reconfigure /cache/build || rm -rf /cache/build && meson setup /cache/build
+      - meson setup --reconfigure /cache/build || rm -rf /cache/build/* /cache/build/.* && meson setup /cache/build
       - ninja -C /cache/build clang-tidy
     environment:
       CC: clang-18
