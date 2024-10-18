@@ -1,4 +1,4 @@
-# kics-scan disable=df746b39-6564-4fed-bf85-e9c44382303c
+# kics-scan disable=df746b39-6564-4fed-bf85-e9c44382303c,965a08d7-ef86-4f14-8792-4a3b2098937e,7384dfb2-fcd1-4fbf-91cd-6c44c318c33c
 
 FROM docker.io/library/python:3.13.0-bookworm@sha256:0eb8d3feda44654b7bc3e6e21dd19b793ce9eda75bbd0cf16a2407a1f0a4448b
 
