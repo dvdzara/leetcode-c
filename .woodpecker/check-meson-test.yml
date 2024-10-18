@@ -19,7 +19,7 @@ steps:
       # Install valgrind.
       - cd /cache/valgrind
       - curl -sO "https://sourceware.org/pub/valgrind/valgrind-$VALGRIND_VERSION.tar.bz2"
-      - bzip2 --decompress "valgrind-$VALGRIND_VERSION.tar.bz2"
+      - bzip2 --decompress --force "valgrind-$VALGRIND_VERSION.tar.bz2"
       - tar -xf "valgrind-$VALGRIND_VERSION.tar"
       - cd "valgrind-$VALGRIND_VERSION"
       - ./configure
