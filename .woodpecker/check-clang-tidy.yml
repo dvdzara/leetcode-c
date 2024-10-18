@@ -32,6 +32,7 @@ steps:
       MESON_VERSION: 1.5.2
     image: docker.io/library/python:3.13.0-bookworm@sha256:0eb8d3feda44654b7bc3e6e21dd19b793ce9eda75bbd0cf16a2407a1f0a4448b
     name: check-clang-tidy
+    volumes:
       - wp-cache_${CI_REPO_REMOTE_ID}_build:/cache/build
       - wp-cache_global_apt-archives:/cache/apt/archives
       - wp-cache_global_apt-lists:/cache/apt/lists
