@@ -15,7 +15,7 @@ RUN rm \
 # Install clang and dependencies of meson and valgrind.
 
 # kics-scan ignore-block
-# hadolint ignore=DL3008,DL3009
+# hadolint ignore=DL3008,DL3009,DL3015
 RUN echo "deb https://apt.llvm.org/bookworm llvm-toolchain-bookworm-18 main" | tee /etc/apt/sources.list.d/llvm.list && \
     curl "https://apt.llvm.org/llvm-snapshot.gpg.key" | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc && \
     apt-get update && \
@@ -39,18 +39,19 @@ ENV CXX="clang++-18"
 
 # renovate: datasource=pypi depName=meson versioning=pep440
 ENV MESON_VERSION="1.5.2"
-RUN pip install --root-user-action=ignore --no-cache-dir "meson==$MESON_VERSION"
+RUN pip install --root-user-action=ignore --no-cache-dir --progress-bar=off "meson==$MESON_VERSION"
 
 # Install valgrind.
 
 ENV VALGRIND_VERSION="3.23.0"
-RUN mkdir /tmp/valgrind && \
-    cd /tmp/valgrind && \
-    curl -sO "https://sourceware.org/pub/valgrind/valgrind-$VALGRIND_VERSION.tar.bz2" && \
+
+WORKDIR /tmp/valgrind
+RUN curl -sO "https://sourceware.org/pub/valgrind/valgrind-$VALGRIND_VERSION.tar.bz2" && \
     bzip2 --decompress "valgrind-$VALGRIND_VERSION.tar.bz2" && \
-    tar -xf "valgrind-$VALGRIND_VERSION.tar" && \
-    cd "valgrind-$VALGRIND_VERSION" && \
-    ./configure && \
+    tar -xf "valgrind-$VALGRIND_VERSION.tar"
+
+WORKDIR /tmp/valgrind/valgrind-$VALGRIND_VERSION
+RUN ./configure && \
     make -j "$(nproc)" && \
     make install
 

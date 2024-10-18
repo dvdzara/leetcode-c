@@ -7,6 +7,8 @@ steps:
       - echo -e 'APT::Get::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";' | tee /etc/apt/apt.conf.d/01-ci-no-extra-pkgs
       - echo -e 'APT::Dir::state "/cache/apt/lists";\nAPT::Dir::cache "/cache/apt/archives";' | tee /etc/apt/apt.conf.d/02-ci-cache-dir
 
+      - cat /etc/apt/apt.conf.d/02-ci-cache-dir
+
       # Install clang, ninja and clang-format.
       - echo "deb https://apt.llvm.org/bookworm llvm-toolchain-bookworm-18 main" | tee /etc/apt/sources.list.d/llvm.list
       - curl "https://apt.llvm.org/llvm-snapshot.gpg.key" -o /etc/apt/trusted.gpg.d/apt.llvm.org.asc
