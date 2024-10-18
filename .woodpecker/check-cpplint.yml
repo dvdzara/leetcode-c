@@ -2,8 +2,7 @@
 
 steps:
   - commands:
-      - pip install --root-user-action=ignore "cpplint==$CPPLINT_VERSION"
-      - apk add git
+      - pip install --root-user-action=ignore --cache-dir=/cache/pip --progress-bar=off "cpplint==$CPPLINT_VERSION"
       - |
         git ls-tree --name-only -r HEAD | grep -E "^(.+\/)?.*[^\/\s]\.(c|h)$" | while read f ; do
           echo "checking $f" && cpplint "$f"
@@ -11,8 +10,10 @@ steps:
     environment:
       # renovate: datasource=pypi depName=cpplint versioning=pep440
       CPPLINT_VERSION: 2.0.0
-    image: docker.io/library/python:3.13.0-alpine@sha256:81362dd1ee15848b118895328e56041149e1521310f238ed5b2cdefe674e6dbf
+    image: docker.io/library/python:3.13.0-bookworm@sha256:0eb8d3feda44654b7bc3e6e21dd19b793ce9eda75bbd0cf16a2407a1f0a4448b
     name: check-cpplint
+    volumes:
+      - wp-cache_global_pip:/cache/pip
 
 when:
   - event: pull_request

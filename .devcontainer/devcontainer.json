@@ -17,5 +17,6 @@
   "features": {
     "ghcr.io/devcontainers/features/common-utils": {},
     "ghcr.io/devcontainers/features/git": {}
-  }
+  },
+  "postStartCommand": "meson setup --reconfigure .build || rm -rf /cache/build && meson setup .build"
 }

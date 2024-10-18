@@ -2,13 +2,13 @@
 
 steps:
   - commands:
-      - pip install --root-user-action=ignore --cache-dir=/cache/pip --progress-bar=off "yamllint==$YAMLLINT_VERSION"
-      - yamllint .
+      - pip install --root-user-action=ignore --cache-dir=/cache/pip --progress-bar=off "meson==$MESON_VERSION"
+      - meson format -qr
     environment:
-      # renovate: datasource=pypi depName=yamllint versioning=pep440
-      YAMLLINT_VERSION: 1.35.1
+      # renovate: datasource=pypi depName=meson versioning=pep440
+      MESON_VERSION: 1.5.2
     image: docker.io/library/python:3.13.0-bookworm@sha256:0eb8d3feda44654b7bc3e6e21dd19b793ce9eda75bbd0cf16a2407a1f0a4448b
-    name: check-yamllint
+    name: chech-meson-format
     volumes:
       - wp-cache_global_pip:/cache/pip
 
