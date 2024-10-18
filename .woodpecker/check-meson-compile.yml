@@ -10,18 +10,18 @@ steps:
       - echo -e 'APT::Get::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";' | tee /etc/apt/apt.conf.d/01-ci-no-extra-pkgs
       - echo -e 'APT::Dir::state "/cache/apt/lists";\nAPT::Dir::cache "/cache/apt/archives";' | tee /etc/apt/apt.conf.d/02-ci-cache-dir
 
-      # Install clang, ninja and clang-format.
+      # Install clang and ninja.
       - echo "deb https://apt.llvm.org/bookworm llvm-toolchain-bookworm-18 main" | tee /etc/apt/sources.list.d/llvm.list
       - curl "https://apt.llvm.org/llvm-snapshot.gpg.key" -o /etc/apt/trusted.gpg.d/apt.llvm.org.asc
       - apt-get update
-      - apt-get install -y --no-install-recommends clang-18 clang-format-18 ninja-build
+      - apt-get install -y --no-install-recommends clang-18 ninja-build
 
       # Install meson.
       - pip install --root-user-action=ignore --cache-dir=/cache/pip --progress-bar=off "meson==$MESON_VERSION"
 
-      # Setup and clang-format.
+      # Setup and compile.
       - meson setup --reconfigure /cache/build || rm -rf /cache/build && meson setup /cache/build
-      - ninja -C /cache/build clang-format
+      - meson compile -C /cache/build
     environment:
       CC: clang-18
       CXX: clang++-18
@@ -29,7 +29,7 @@ steps:
       # renovate: datasource=pypi depName=meson versioning=pep440
       MESON_VERSION: 1.5.2
     image: docker.io/library/python:3.13.0-bookworm@sha256:0eb8d3feda44654b7bc3e6e21dd19b793ce9eda75bbd0cf16a2407a1f0a4448b
-    name: check-clang-format
+    name: check-meson-compile
       - wp-cache_${CI_REPO_REMOTE_ID}_build:/cache/build
       - wp-cache_global_apt-archives:/cache/apt/archives
       - wp-cache_global_apt-lists:/cache/apt/lists
