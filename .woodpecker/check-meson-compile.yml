@@ -4,8 +4,8 @@ steps:
   - commands:
       # Configure apt.
       - rm /etc/apt/apt.conf.d/70debconf /etc/apt/apt.conf.d/docker-autoremove-suggests /etc/apt/apt.conf.d/docker-clean /etc/apt/apt.conf.d/docker-gzip-indexes
-      - echo -e 'APT::Get::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";' | tee /etc/apt/apt.conf.d/01-ci-no-extra-pkgs
-      - echo -e 'APT::Dir::state "/cache/apt/lists";\nAPT::Dir::cache "/cache/apt/archives";' | tee /etc/apt/apt.conf.d/02-ci-cache-dir
+      - echo 'APT::Get::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";' | tee /etc/apt/apt.conf.d/01-ci-no-extra-pkgs
+      - echo 'APT::Dir::state "/cache/apt/lists";\nAPT::Dir::cache "/cache/apt/archives";' | tee /etc/apt/apt.conf.d/02-ci-cache-dir
 
       # Install clang and ninja.
       - echo "deb https://apt.llvm.org/bookworm llvm-toolchain-bookworm-18 main" | tee /etc/apt/sources.list.d/llvm.list
