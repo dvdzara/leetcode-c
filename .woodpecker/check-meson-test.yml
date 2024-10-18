@@ -29,7 +29,7 @@ steps:
       - make install
       # Required by valgrind when running inside docker container.
       - ulimit -n 4096
-      - cd ${CI_WORKSPACE}
+      - cd $CI_WORKSPACE
 
       # Setup and test.
       - meson setup --reconfigure /cache/build || meson setup /cache/build
