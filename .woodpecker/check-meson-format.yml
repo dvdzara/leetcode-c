@@ -7,7 +7,7 @@ steps:
     environment:
       # renovate: datasource=pypi depName=meson versioning=pep440
       MESON_VERSION: 1.5.2
-    image: docker.io/library/python:3.13.0-bookworm@sha256:d6038cd5fe90d591c8a7589330b003fc0ae7ac2958d4b9e1b90e0f88515154b5
+    image: docker.io/library/python:3.13.0-bookworm@sha256:c8ab6e77bd9788bd7952069fc8d19e5f5c6954712f1e9a0739882963dca9438c
     name: chech-meson-format
     volumes:
       - wp-cache_global_pip:/cache/pip
