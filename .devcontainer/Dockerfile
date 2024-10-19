@@ -1,6 +1,6 @@
 # kics-scan disable=df746b39-6564-4fed-bf85-e9c44382303c,965a08d7-ef86-4f14-8792-4a3b2098937e
 
-FROM docker.io/library/python:3.13.0-bookworm@sha256:d6038cd5fe90d591c8a7589330b003fc0ae7ac2958d4b9e1b90e0f88515154b5
+FROM docker.io/library/python:3.13.0-bookworm@sha256:c8ab6e77bd9788bd7952069fc8d19e5f5c6954712f1e9a0739882963dca9438c
 
 # Configure shell.
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
