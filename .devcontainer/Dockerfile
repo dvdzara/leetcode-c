@@ -39,7 +39,7 @@ ENV CXX="clang++-18"
 # Install meson.
 
 # renovate: datasource=pypi depName=meson versioning=pep440
-ENV MESON_VERSION="1.5.2"
+ENV MESON_VERSION="1.6.0"
 RUN pip install --root-user-action=ignore --no-cache-dir --progress-bar=off "meson==$MESON_VERSION"
 
 # Install valgrind.
