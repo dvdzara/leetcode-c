@@ -24,7 +24,7 @@ steps:
       DEBIAN_FRONTEND: noninteractive
       # renovate: datasource=pypi depName=meson versioning=pep440
       MESON_VERSION: 1.5.2
-    image: docker.io/library/python:3.13.0-bookworm@sha256:c8ab6e77bd9788bd7952069fc8d19e5f5c6954712f1e9a0739882963dca9438c
+    image: docker.io/library/python:3.13.0-bookworm@sha256:feee4734fdc44cc09a3c9cdb72e05bb8ff7e964f64766bc1a68638b2c667cf35
     name: check-clang-format
     volumes:
       - wp-cache_${CI_REPO_REMOTE_ID}_build:/cache/build
